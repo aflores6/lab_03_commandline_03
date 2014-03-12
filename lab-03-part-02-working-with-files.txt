@@ -12,7 +12,7 @@ Follow the instructions line-by-line.
 [NO OUTPUT]
 ----------
 ==========
-2. Find out if mtec1002-lab-02 already exists (from the previous lab).  If it doesn't, go back to the previous lab and find the steps regarding downloading the lab materials.
+2. Find out if mtec1002-lab-03 already exists (from the previous lab).  If it doesn't, go back to the previous lab and find the steps regarding downloading the lab materials.
 
 (See steps 1-8 in http://foureyes.github.io/mtec1002-spring2014/labs/03/lab-03-part-02-working-with-files.txt)
 [NO OUTPUT]
@@ -36,7 +36,9 @@ $ touch foo.txt
 $ ls
 Copy and paste the output below.
 ----------
-
+ent-v321-008:my_file student$ touch foo.txt
+ent-v321-008:my_file student$ ls
+foo.txt
 
 
 ==========
@@ -44,7 +46,9 @@ Copy and paste the output below.
 
 $ touch bar.txt
 ----------
-
+ent-v321-008:my_file student$ touch bar.txt
+ent-v321-008:my_file student$ ls
+bar.txt	foo.txt
 
 
 ==========
@@ -52,7 +56,10 @@ $ touch bar.txt
 
 Copy and paste the output below.
 ----------
-
+ent-v321-008:my_file student$ ls -l
+total 0
+-rw-r--r--  1 student  staff  0 Feb 19 19:37 bar.txt
+-rw-r--r--  1 student  staff  0 Feb 19 19:36 foo.text
 
 
 ==========
@@ -61,7 +68,12 @@ Copy and paste the output below.
 
 Write the command that you used to copy the file.  Additionally, copy and paste the output of your file listing below.
 ----------
-
+ent-v321-008:my_file student$ cp bar.txt baz.txt
+ent-v321-008:my_file student$ ls -l
+total 0
+-rw-r--r--  1 student  staff  0 Feb 19 19:37 bar.txt
+-rw-r--r--  1 student  staff  0 Feb 19 19:44 baz.txt
+-rw-r--r--  1 student  staff  0 Feb 19 19:36 foo.txt
 
 
 ==========
@@ -69,13 +81,21 @@ Write the command that you used to copy the file.  Additionally, copy and paste 
 
 Write the command that you used to remove the file.  Copy and paste the output of your file listing below.
 ----------
+ent-v321-008:my_file student$ rm bar.txt 
+ent-v321-008:my_file student$ ls -l
+total 0
+-rw-r--r--  1 student  staff  0 Feb 19 19:44 baz.txt
+-rw-r--r--  1 student  staff  0 Feb 19 19:36 foo.txt
+
 ==========
 11. Move the file called foo.txt to qux.txt and then list the files again.
 
 
 Write the command that you used to move the file.  Copy and paste the output of your file listing below.
 ----------
-
+ent-v321-008:my_file student$ mv foo.txt qux.txt
+ent-v321-008:my_file student$ ls
+baz.txt	qux.txt
 
 
 ==========
@@ -90,7 +110,8 @@ Write the command that you used to move the file.  Copy and paste the output of 
 
 Write out the command that you used and what happened.
 ----------
-
+ent-v321-008:mtec1002-lab-03 student$ rmdir my_file
+rmdir: my_file: Directory not empty
 
 
 ==========
@@ -98,7 +119,8 @@ Write out the command that you used and what happened.
 
 Write out the command that you used and what happened.
 ----------
-
+ent-v321-008:mtec1002-lab-03 student$ rm my_file
+rm: my_file: is a directory
 
 
 ==========
@@ -108,7 +130,8 @@ Force the removal of the directory and files using the -rf flag
 
 $ rm -rf my_files
 ----------
-
+ent-v321-008:mtec1002-lab-03 student$ ls
+books	logs	web
 
 
 ==========
@@ -121,7 +144,7 @@ Use the command called cat on the file to show its contents.
 Describe what happened below.
 ----------
 
-
+lots of text
 
 ==========
 17. That was a lot of text.  Let's find ways to limit it.  Using the same file...
@@ -175,4 +198,13 @@ Write the command that you used below.  Describe what spacebar and q does after 
 
 ==========
 22.  How many lines are in pg1232.txt?  What command did you use to determine the line count?
+----------
+
+
+==========
+OPTIONAL
+
+23.  Make sure you're in the books/other folder.  Copy all of the txt files from that folder to your home directory using wildcard matching.
+
+Write the command that you used below.
 ----------
