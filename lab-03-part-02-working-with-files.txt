@@ -1,4 +1,4 @@
-Lab - Working With Files
+Lab - Permissions, Editing Text, Date and Time
 ==========
 Follow the instructions line-by-line.  
 
@@ -7,204 +7,164 @@ Follow the instructions line-by-line.
 * "No output" or "nothing happens" are valid answers to any of the questions.
 ==========
 
+
 ==========
-1. Open a new terminal window.
-[NO OUTPUT]
+We're going to be writing a shell script.  First, though... let's figure out what day and time it is!
+==========
+
+==========
+1. What day and time is it?
+
+What command did you use, and what was its output?
 ----------
-==========
-2. Find out if mtec1002-lab-03 already exists (from the previous lab).  If it doesn't, go back to the previous lab and find the steps regarding downloading the lab materials.
+ent-v321-008:other student$ date
+Wed Feb 19 20:08:59 EST 2014
 
-(See steps 1-8 in http://foureyes.github.io/mtec1002-spring2014/labs/03/lab-03-part-02-working-with-files.txt)
-[NO OUTPUT]
+
+==========
+2. Print out a calendar for this month.
+
+What command did you use, and what was its output?
 ----------
+ent-v321-008:other student$ cal 2014
+                             2014
+
+      January               February               March
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+          1  2  3  4                     1                     1
+ 5  6  7  8  9 10 11   2  3  4  5  6  7  8   2  3  4  5  6  7  8
+12 13 14 15 16 17 18   9 10 11 12 13 14 15   9 10 11 12 13 14 15
+19 20 21 22 23 24 25  16 17 18 19 20 21 22  16 17 18 19 20 21 22
+26 27 28 29 30 31     23 24 25 26 27 28     23 24 25 26 27 28 29
+                                            30 31
+       April                  May                   June
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+       1  2  3  4  5               1  2  3   1  2  3  4  5  6  7
+ 6  7  8  9 10 11 12   4  5  6  7  8  9 10   8  9 10 11 12 13 14
+13 14 15 16 17 18 19  11 12 13 14 15 16 17  15 16 17 18 19 20 21
+20 21 22 23 24 25 26  18 19 20 21 22 23 24  22 23 24 25 26 27 28
+27 28 29 30           25 26 27 28 29 30 31  29 30
+                                            
+        July                 August              September
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+       1  2  3  4  5                  1  2      1  2  3  4  5  6
+ 6  7  8  9 10 11 12   3  4  5  6  7  8  9   7  8  9 10 11 12 13
+13 14 15 16 17 18 19  10 11 12 13 14 15 16  14 15 16 17 18 19 20
+20 21 22 23 24 25 26  17 18 19 20 21 22 23  21 22 23 24 25 26 27
+27 28 29 30 31        24 25 26 27 28 29 30  28 29 30
+                      31                    
+      October               November              December
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+          1  2  3  4                     1      1  2  3  4  5  6
+ 5  6  7  8  9 10 11   2  3  4  5  6  7  8   7  8  9 10 11 12 13
+12 13 14 15 16 17 18   9 10 11 12 13 14 15  14 15 16 17 18 19 20
+19 20 21 22 23 24 25  16 17 18 19 20 21 22  21 22 23 24 25 26 27
+26 27 28 29 30 31     23 24 25 26 27 28 29  28 29 30 31
+                      30                    
+
+
+
 ==========
-3. Change your directory mtec1002-lab-03
-[NO OUTPUT]
+3. Go to your home directory.  Verify that you're in your home directory.
+
+What commands did you use to do this?
 ----------
+cd ~
+pwd
+
+
 ==========
-4. Create a directory called my_files
-[NO OUTPUT]
+4. Create an empty file called copy_to_backup.sh.  Verify that the file exists.
+
+What commands did you use to do this?
 ----------
+ent-v321-008:~ student$ touch copy_to_backup.sh.
+ent-v321-008:~ student$ ls
+Desktop				Downloads			Movies				My Song.band			Public				Things				copy_to_backup.sh.		mtec1002-lab-03.tar.gz		stuff
+Documents			Library				Music				Pictures			Sites				VirtualBox VMs			mtec1002-lab-03			mtec1002-lab-03.tar.gz.txt	vms
+
+
 ==========
-5. Change the directory to my_files
-[NO OUTPUT]
+5. What are the permissions on your copy_to_backup.sh.
+
+What command did you use to find the permissions?
 ----------
-==========
-6. Create a new file using touch.
+ent-v321-008:~ student$ ls -l copy_to_backup.sh.
+-rw-r--r--  1 student  staff  0 Feb 19 20:14 copy_to_backup.sh.
 
-$ touch foo.txt
-$ ls
-Copy and paste the output below.
+
+==========
+6. Change the permissions so that this file is executable by the user.  Verify the new permissions.
+
+What commands did you use to do this?  What was the output?
 ----------
-ent-v321-008:my_file student$ touch foo.txt
-ent-v321-008:my_file student$ ls
-foo.txt
+ent-v321-008:~ student$ chmod u+x copy_to_backup.sh.
+ent-v321-008:~ student$ ls -l copy_to_backup.sh.
+-rwxr--r--  1 student  staff  0 Feb 19 20:14 copy_to_backup.sh.
 
 
 ==========
-7. Create another new file using touch.
+7. Try executing the file!
 
-$ touch bar.txt
+$ ./copy_to_backup.sh
+
+What command did you use to try to execute the file?  What happens?
 ----------
-ent-v321-008:my_file student$ touch bar.txt
-ent-v321-008:my_file student$ ls
-bar.txt	foo.txt
+nothing
 
 
 ==========
-8. List the files in this directory using the flag that gives the most details.
+8. Open the file with nano
 
-Copy and paste the output below.
+What command did you use to do this?
 ----------
-ent-v321-008:my_file student$ ls -l
-total 0
--rw-r--r--  1 student  staff  0 Feb 19 19:37 bar.txt
--rw-r--r--  1 student  staff  0 Feb 19 19:36 foo.text
+nano
 
 
 ==========
-9. Create a copy of bar.txt called baz.txt and then list the files again.
+9. In your file, write the commands to do the falling
 
+a. create a directory called backup 
+b. copy all of the files txt files in the current directory to the backup directory (use *.txt)
+c. print out "I'm done backing up"
 
-Write the command that you used to copy the file.  Additionally, copy and paste the output of your file listing below.
-----------
-ent-v321-008:my_file student$ cp bar.txt baz.txt
-ent-v321-008:my_file student$ ls -l
-total 0
--rw-r--r--  1 student  staff  0 Feb 19 19:37 bar.txt
--rw-r--r--  1 student  staff  0 Feb 19 19:44 baz.txt
--rw-r--r--  1 student  staff  0 Feb 19 19:36 foo.txt
-
-
-==========
-10. Delete the file called bar.txt and then list the files again.
-
-Write the command that you used to remove the file.  Copy and paste the output of your file listing below.
-----------
-ent-v321-008:my_file student$ rm bar.txt 
-ent-v321-008:my_file student$ ls -l
-total 0
--rw-r--r--  1 student  staff  0 Feb 19 19:44 baz.txt
--rw-r--r--  1 student  staff  0 Feb 19 19:36 foo.txt
-
-==========
-11. Move the file called foo.txt to qux.txt and then list the files again.
-
-
-Write the command that you used to move the file.  Copy and paste the output of your file listing below.
-----------
-ent-v321-008:my_file student$ mv foo.txt qux.txt
-ent-v321-008:my_file student$ ls
-baz.txt	qux.txt
-
-
-==========
-12. Go up one directory so that you're in ~/mtec1002-lab-03.
-[NO OUTPUT]
-----------
-
-
-
-==========
-13. Try removing the directory called my_files using rmdir.
-
-Write out the command that you used and what happened.
-----------
-ent-v321-008:mtec1002-lab-03 student$ rmdir my_file
-rmdir: my_file: Directory not empty
-
-
-==========
-14. Try removing the directory called my_files using rm.
-
-Write out the command that you used and what happened.
-----------
-ent-v321-008:mtec1002-lab-03 student$ rm my_file
-rm: my_file: is a directory
-
-
-==========
-15. MAKE SURE YOU'RE IN THE mtec1002-lab-03 directory!  
-
-Force the removal of the directory and files using the -rf flag
-
-$ rm -rf my_files
-----------
-ent-v321-008:mtec1002-lab-03 student$ ls
-books	logs	web
-
-
-==========
-16. There's a txt file version of a book located in the mtec1002-lab-03 folder.  It is in the following directory if you're in the lab folder:
-
-books/other/pg1232.txt
-
-Use the command called cat on the file to show its contents. 
-
-Describe what happened below.
-----------
-
-lots of text
-
-==========
-17. That was a lot of text.  Let's find ways to limit it.  Using the same file...
-
-books/other/pg1232.txt
-
-Use the command, head, on the file to show the contents of the beginning of the file.  
-
-Write the command that you used below.  Write the last line of the output below (it should be the title).
+Write out the code in your file below...
 ----------
 
 
 
 ==========
-18. Using the same file again!
-
-books/other/pg1232.txt
-
-Use tail on the file to show the contents of the end of the file.  
-
-Write the command that you used below.  Write the last line of the output below (it should be the title).
+10. Create a directory in your home called test
 ----------
 
 
 
 ==========
-19. Using the same file...
+11. Go into that directory and create two empty files... 1.txt and 2.txt
 
-books/other/pg1232.txt
-
-Use less and more on the file to show the contents of the file.  Try pressing spacebar and/or q afterwards.
-
-Write the command that you used below.  Describe what spacebar and q does after using either less or more.
+What commands did you use to do this?
 ----------
 
 
 
 ==========
-20. Describe what situations you would use the following commands for viewing files: less, more, cat, tail, head
+12. Move the script that you created into this directory.
 
-(Some characteristics that may help your description might be the length of the file, whether or not you'd like to read the whole thing... or just the beginning or end, etc.)
+What commands did you use to do this?
 ----------
 
 
 
 ==========
-21.  How many words are in pg1232.txt?  What command did you use to determine the word count?
+13. Run your script.
+
+What commands did you use to do this?
 ----------
 
 
 
 ==========
-22.  How many lines are in pg1232.txt?  What command did you use to determine the line count?
-----------
+14. Verify that a backup folder was created in your home directory... with copies of the files present.
 
-
-==========
-OPTIONAL
-
-23.  Make sure you're in the books/other folder.  Copy all of the txt files from that folder to your home directory using wildcard matching.
-
-Write the command that you used below.
+What commands did you use to do this?  Show the output.
 ----------
